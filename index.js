@@ -39,3 +39,5 @@ function answer(data) {
   });
 }
 
+
+console.log(dataProjectDetails);

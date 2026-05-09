@@ -1,6 +1,6 @@
-name = "my-projects-list-data-api-cloudflare"
+name = "My Projects And About Me API"
 main = "index.js"
 compatibility_date = "2026-04-28"
 
 [vars]
-VERSION = "1.0.0"
+VERSION = "2.0.0"

@@ -1,4 +1,4 @@
-import {nameUrl, texts} from '../config/utils.js';
+import {nameUrl, apiUrl, texts} from '../config/utils.js';
 
 
 class Technology {
@@ -15,12 +15,12 @@ class ProjectDetails {
     const techsTemplates = {
       base: {
         architectures: [], 
-        renderings: ['DOM'], 
-        hostings: ['Статичний'], 
+        renderings: [], 
+        hostings: [], 
         onlinePlatforms: ['GitHub'],
         langsProgrammings: ['JavaScript'], 
-        langsMarkings: ['HTML'], 
-        langsStyles: ['CSS'], 
+        langsMarkings: [], 
+        langsStyles: [], 
         langsDatas: [],
         langsVectorGraphics: [], 
         frameworks: [], 
@@ -30,14 +30,28 @@ class ProjectDetails {
       },
       
       website: {
+        renderings: ['DOM'], 
+        hostings: ['Статичний'], 
+        langsMarkings: ['HTML'], 
+        langsStyles: ['CSS'], 
         langsDatas: ['JSON'],
         langsVectorGraphics: ['SVG'], 
-        apis: ['my-projects-list-data-api'],
+        apis: ['My Projects And About Me API'],
         
       },
       
       game: {
-        
+        architectures: ['SPA'],
+        renderings: ['DOM'], 
+        hostings: ['Статичний'], 
+        langsMarkings: ['HTML'], 
+        langsStyles: ['CSS'], 
+      },
+      
+      api: {
+        hostings: ['Динамічний'], 
+        onlinePlatforms: ['Cloudflare'],
+        langsDatas: ['TOML'],
       },
     };
     
@@ -72,18 +86,18 @@ class ProjectDetails {
       new Technology('Архітектура', architectures),
       new Technology('Рендеринг', renderings),
       new Technology('Хостинг', hostings),
-      new Technology('Онлайн платформи', onlinePlatforms),
+      new Technology('Онлайн-платформи', onlinePlatforms),
       new Technology('Мови програмування', langsProgrammings),
       new Technology('Мови розмітки', langsMarkings),
       new Technology('Мови стилів', langsStyles),
-      new Technology('Мови даних', langsDatas),
-      new Technology('Мови векторноі графіки', langsVectorGraphics),
+      new Technology('Формати даних', langsDatas),
+      new Technology('Формати векторної графіки', langsVectorGraphics),
       new Technology('Фреймворки', frameworks),
       new Technology('Бібліотеки', libs),
       new Technology('API', apis),
     ];
     
-    this.urlProject = `https://kingalaluna.github.io/${nameUrl(name)}/`;
+    this.urlProject = techs.type != 'api' ? `https://kingalaluna.github.io/${nameUrl(name)}/` : techs.apiUrl;
     this.urlCode = `https://github.com/KingAlaluna/${nameUrl(name)}.git`;
   }
 }
@@ -100,6 +114,22 @@ export class Game {
   constructor(name, details, techs = {}, ) {
     const techsAndType = {...techs, type: 'game'};
     return new ProjectDetails(name, details, techsAndType, );
+  }
+}
+
+
+export class API {
+  constructor(name, details, techs = {}, ) {
+    const techsAndType = {...techs, type: 'api'};
+    return new ProjectDetails(name, details, techsAndType, );
+  }
+}
+
+
+export class APIUrl {
+  constructor(name, param) {
+    this.name = name;
+    this.url = apiUrl(param);
   }
 }
 
