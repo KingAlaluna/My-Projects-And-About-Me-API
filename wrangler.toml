@@ -1,6 +1,6 @@
-name = "My Projects And About Me API"
+name = "my-projects-and-about-me-api"
 main = "index.js"
 compatibility_date = "2026-04-28"
 
 [vars]
-VERSION = "2.0.0"
+VERSION = "2.0.1"
