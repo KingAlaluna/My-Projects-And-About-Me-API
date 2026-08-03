@@ -1,13 +1,23 @@
-import {nameUrl, } from '../config/utils.js';
+import {
+  gitPagesUrl, 
+  gitCodeUrl,
+} from '../config/utils.js';
 
 
-export class GitHub {
-  constructor(name, type = null, status = 'release') {
+export class Project {
+  constructor({
+    name, 
+    type = null, 
+    status = 'release', 
+    urlProject, 
+    param = '', 
+    urlCode, 
+  }) {
     this.name = name;
     this.type = type;
     this.status = status;
-    this.urlProject = `https://kingalaluna.github.io/${nameUrl(name)}/`;
-    this.urlCode = `https://github.com/KingAlaluna/${nameUrl(name)}.git`;
+    this.urlProject = urlProject ? urlProject(name, param) : gitPagesUrl(name);
+    this.urlCode = urlCode ? urlCode(name) : gitCodeUrl(name);
   }
 }
 

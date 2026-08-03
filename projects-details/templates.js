@@ -1,4 +1,65 @@
-import {nameUrl, apiUrl, texts} from '../config/utils.js';
+import {
+  gitPagesUrl, 
+  gitCodeUrl,
+  manyUrl,
+  texts,
+  getType,
+} from '../config/utils.js';
+
+
+const techsTemplates = {
+  base: {
+    architectures: [], 
+    renderings: [], 
+    hostings: [], 
+    onlinePlatforms: ['GitHub'],
+    langsProgrammings: ['JavaScript'], 
+    langsMarkings: ['Markdown'], 
+    langsStyles: [], 
+    langsDatas: [],
+    langsVectorGraphics: [], 
+    frameworks: [], 
+    libs: [], 
+    apis: [],
+  },
+  
+  website: {
+    renderings: ['DOM'], 
+    hostings: ['Статичний'], 
+    langsMarkings: ['HTML'], 
+    langsStyles: ['CSS'], 
+    langsDatas: ['JSON'],
+    langsVectorGraphics: ['SVG'], 
+    apis: ['My Projects And About Me API'],
+  },
+  
+  game: {
+    architectures: ['SPA'],
+    renderings: ['DOM'], 
+    hostings: ['Статичний'], 
+    langsMarkings: ['HTML'], 
+    langsStyles: ['CSS'], 
+  },
+  
+  api: {
+    hostings: ['Динамічний'], 
+    onlinePlatforms: ['Cloudflare'],
+    langsDatas: ['TOML'],
+  },
+  
+  lib: {
+    hostings: ['Статичний', ], 
+    onlinePlatforms: ['GitHub', 'jsDelivr', ],
+    langsDatas: ['JSON', ],
+  },
+};
+
+
+const finaleTechs = (type, techs, ) => mergerArrays(
+  techsTemplates.base, 
+  techsTemplates[type], 
+  techs,
+);
 
 
 class Technology {
@@ -10,58 +71,16 @@ class Technology {
 
 
 
-class ProjectDetails {
-  constructor(name, details, techs = {}, ) {
-    const techsTemplates = {
-      base: {
-        architectures: [], 
-        renderings: [], 
-        hostings: [], 
-        onlinePlatforms: ['GitHub'],
-        langsProgrammings: ['JavaScript'], 
-        langsMarkings: [], 
-        langsStyles: [], 
-        langsDatas: [],
-        langsVectorGraphics: [], 
-        frameworks: [], 
-        libs: [], 
-        apis: [],
-        
-      },
-      
-      website: {
-        renderings: ['DOM'], 
-        hostings: ['Статичний'], 
-        langsMarkings: ['HTML'], 
-        langsStyles: ['CSS'], 
-        langsDatas: ['JSON'],
-        langsVectorGraphics: ['SVG'], 
-        apis: ['My Projects And About Me API'],
-        
-      },
-      
-      game: {
-        architectures: ['SPA'],
-        renderings: ['DOM'], 
-        hostings: ['Статичний'], 
-        langsMarkings: ['HTML'], 
-        langsStyles: ['CSS'], 
-      },
-      
-      api: {
-        hostings: ['Динамічний'], 
-        onlinePlatforms: ['Cloudflare'],
-        langsDatas: ['TOML'],
-      },
-    };
-    
-    
-    const finaleTechs = mergerArrays(
-      techsTemplates.base, 
-      techsTemplates[techs.type], 
-      techs,
-    );
-    
+export class Project {
+  constructor({
+    name, 
+    type = 'website', 
+    status = 'release', 
+    details, 
+    techs = {}, 
+    urlProject = gitPagesUrl(name), 
+    urlCode = gitCodeUrl(name), 
+  }) {
     const {
       architectures, 
       renderings, 
@@ -75,11 +94,11 @@ class ProjectDetails {
       frameworks, 
       libs, 
       apis,
-    } = finaleTechs;
+    } = finaleTechs(type, techs);
     
     
     this.name = name;
-    this.status = techs.status || 'release';
+    this.status = status;
     this.details = texts(details);
     
     this.technologies = [
@@ -97,41 +116,11 @@ class ProjectDetails {
       new Technology('API', apis),
     ];
     
-    this.urlProject = techs.type != 'api' ? `https://kingalaluna.github.io/${nameUrl(name)}/` : techs.apiUrl;
-    this.urlCode = `https://github.com/KingAlaluna/${nameUrl(name)}.git`;
+    this.urlProject = getType(urlProject) === 'function' ? urlProject(manyUrl(name)) : urlProject;
+    this.urlCode = urlCode;
   }
 }
 
-
-export class Website {
-  constructor(name, details, techs = {}, ) {
-    const techsAndType = {...techs, type: 'website'};
-    return new ProjectDetails(name, details, techsAndType, );
-  }
-}
-
-export class Game {
-  constructor(name, details, techs = {}, ) {
-    const techsAndType = {...techs, type: 'game'};
-    return new ProjectDetails(name, details, techsAndType, );
-  }
-}
-
-
-export class API {
-  constructor(name, details, techs = {}, ) {
-    const techsAndType = {...techs, type: 'api'};
-    return new ProjectDetails(name, details, techsAndType, );
-  }
-}
-
-
-export class APIUrl {
-  constructor(name, param) {
-    this.name = name;
-    this.url = apiUrl(param);
-  }
-}
 
 
 function mergerArrays(obj1, obj2 = {}, obj3 = {}) {
