@@ -17,6 +17,7 @@ export const categories = {
   urls: [
     'projects',
     'about-me',
+    'urls',
     'all',
   ],
 };

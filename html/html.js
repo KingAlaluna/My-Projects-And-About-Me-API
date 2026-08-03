@@ -10,7 +10,7 @@ export const html = ({
   
   for (let el of data) {
     const {names, labels, url, } = el;
-    const labelsEn = String(labels.en.map(el => el || ''));
+    const labelsEn = String(labels.en.filter(Boolean).join(', '));
     
     content += `<li>
       <p>${names.en}${labelsEn ? ` (${labelsEn})` : ''}</p>
