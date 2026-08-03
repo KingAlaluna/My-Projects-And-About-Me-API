@@ -13,6 +13,12 @@ export const categories = {
     'techs',
     'all',
   ],
+  
+  urls: [
+    'projects',
+    'about-me',
+    'all',
+  ],
 };
 
 
@@ -65,4 +71,9 @@ export const namesUrl = {
     uk: 'технології',
     en: 'technologies',
   },
+  
+  urls: {
+    uk: 'посилання',
+    en: 'urls',
+  }
 };

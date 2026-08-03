@@ -56,9 +56,11 @@ const games = {
   data: [
     new Project({
       name: 'Dino-DOM',
+      type: 'аркада',
     }),
     new Project({
       name: 'Flappy UFO-DOM',
+      type: 'аркада',
     }),
   ]
 };
@@ -69,6 +71,7 @@ const libs = {
   data: [
     new Project({
       name: 'Alive',
+      type: 'реактивність, створення сайтів',
       urlProject: libUrl,
       param: '.min',
     }),
@@ -81,6 +84,7 @@ const apis = {
   data: [
     new Project({
       name: 'My Projects and About Me API',
+      type: 'персональний хаб',
       urlProject: apiUrl,
       param: 'urls',
     }),

@@ -1,2 +1,2 @@
-# My-Projects-and-About-Me-API
+# My Projects and About Me API
 Дане API корисно тільки для автора та не предназначене для інших людей.

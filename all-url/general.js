@@ -12,7 +12,7 @@ function allUrl(name, data, param = '') {
         uk: [namesUrl[param]?.uk, ],
         en: [namesUrl[param]?.en, ],
       },
-      url: `https://my-projects-and-about-me-api.kvses0417.workers.dev/urls/${name}${param}`,
+      url: `https://my-projects-and-about-me-api.kvses0417.workers.dev/${name}${param}`,
     },
   ];
   
@@ -26,7 +26,7 @@ function allUrl(name, data, param = '') {
         uk: [namesUrl[category]?.uk, namesUrl[param]?.uk, ],
         en: [namesUrl[category]?.en, namesUrl[param]?.en, ],
       },
-      url: `https://my-projects-and-about-me-api.kvses0417.workers.dev/urls/${name}${category ? `/${category}` : ''}${param}`,
+      url: `https://my-projects-and-about-me-api.kvses0417.workers.dev/${name}${category ? `/${category}` : ''}${param}`,
     });
   }
   
@@ -41,13 +41,16 @@ const projects = [
 ];
 
 const aboutMe = allUrl('about-me', categories.aboutMe, );
+const urls = allUrl('urls', categories.urls, );
 
 
 export const dataAllUrl = {
   projects,
   'about-me': aboutMe,
+  urls,
   all: [
     ...projects,
     ...aboutMe,
+    ...urls,
   ],
 };
