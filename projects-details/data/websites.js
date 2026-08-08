@@ -4,6 +4,7 @@ import {texts, } from '../../config/utils.js';
 
 export const websites = {
   name: 'Сайти',
+  key: 'websites',
   note: texts([
     'Інформація про мої контакти.',
     'Світла, темна та системна теми.',

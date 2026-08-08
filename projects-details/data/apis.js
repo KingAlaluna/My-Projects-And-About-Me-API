@@ -5,6 +5,7 @@ import {dataAllUrl} from '../../all-url/general.js';
 
 export const apis = {
   name: 'API',
+  key: 'apis',
   note: texts([
     'Оскільки в API немає **одного чіткого** посилання, так як посилання завжди **різні** в залежності від необхідності відповіді, посилань на API може бути **декілька**.',
   ]),

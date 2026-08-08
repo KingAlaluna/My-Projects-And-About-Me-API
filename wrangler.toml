@@ -3,4 +3,4 @@ main = "index.js"
 compatibility_date = "2026-04-28"
 
 [vars]
-VERSION = "3.3.0"
+VERSION = "3.4.0"

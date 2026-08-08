@@ -24,6 +24,7 @@ const techsTemplates = {
   },
   
   website: {
+    architectures: ['PWA'],
     renderings: ['DOM'], 
     hostings: ['Статичний'], 
     langsMarkings: ['HTML'], 

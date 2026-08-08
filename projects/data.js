@@ -7,6 +7,7 @@ import {
 
 const websites = {
   name: 'Сайти',
+  key: 'websites',
   data: [
     new Project({
       name: 'Calculator',
@@ -53,6 +54,7 @@ const websites = {
 
 const games = {
   name: 'Ігри',
+  key: 'games',
   data: [
     new Project({
       name: 'Dino-DOM',
@@ -68,6 +70,7 @@ const games = {
 
 const libs = {
   name: 'Бібліотеки',
+  key: 'libs',
   data: [
     new Project({
       name: 'Alive',
@@ -81,6 +84,7 @@ const libs = {
 
 const apis = {
   name: 'API',
+  key: 'apis',
   data: [
     new Project({
       name: 'My Projects and About Me API',

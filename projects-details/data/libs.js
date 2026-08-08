@@ -4,6 +4,7 @@ import {texts, libUrl, } from '../../config/utils.js';
 
 export const libs = {
   name: 'Бібліотеки',
+  key: 'libs',
   note: texts([
     'Оскільки в більшості бібліотек є **декілька версій** ("min", "browser", тощо), посилань на бібліотеки може бути **декілька**.',
   ]),
